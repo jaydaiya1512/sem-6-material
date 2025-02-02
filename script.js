@@ -12,4 +12,6 @@ loginButton.addEventListener("click", () => {
   }
 });
 
-
+function goBack() {
+  window.location.href = "study.html"; // Redirect to study.html
+}
