@@ -3,13 +3,14 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Poppins', sans-serif;
-  background: #0f0f0f;
+  background: linear-gradient(135deg, #0f0f0f, #1a1a1a);
   color: #fff;
   min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
+  overflow: hidden;
 }
 
 /* Login Page Styles */
@@ -19,60 +20,140 @@ body {
   align-items: center;
   justify-content: center;
   height: 100vh;
-  background: linear-gradient(135deg, #1a1a1a, #0a0a0a);
+  width: 100%;
+  position: relative;
+  overflow: hidden;
 }
 
 .login-box {
   background: rgba(255, 255, 255, 0.1);
   padding: 40px;
-  border-radius: 15px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-  animation: fadeIn 1.5s ease-in-out;
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+  animation: fadeIn 1.5s ease-in-out, float 4s infinite ease-in-out;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  position: relative;
+  z-index: 2;
 }
 
 .login-title {
   font-size: 2.5rem;
   margin-bottom: 10px;
   color: #ff6f61;
+  text-shadow: 0 0 10px #ff6f61, 0 0 20px #ff6f61;
+  animation: glow 2s infinite alternate;
 }
 
 .login-subtitle {
   font-size: 1rem;
   margin-bottom: 20px;
   color: #ccc;
+  font-style: italic;
 }
 
 .login-input {
   width: 100%;
-  padding: 10px;
+  padding: 12px;
   margin-bottom: 20px;
   border: none;
-  border-radius: 5px;
+  border-radius: 8px;
   background: rgba(255, 255, 255, 0.1);
   color: #fff;
   font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.login-input:focus {
+  outline: none;
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 0 10px rgba(255, 111, 97, 0.5);
 }
 
 .login-button {
   width: 100%;
-  padding: 10px;
+  padding: 12px;
   border: none;
-  border-radius: 5px;
+  border-radius: 8px;
   background: #ff6f61;
   color: #fff;
   font-size: 1rem;
   cursor: pointer;
-  transition: background 0.3s ease;
+  transition: background 0.3s ease, transform 0.3s ease;
+  font-weight: 600;
 }
 
 .login-button:hover {
   background: #ff4a3d;
+  transform: scale(1.05);
 }
 
 .error-message {
   color: #ff4a3d;
   margin-top: 10px;
   font-size: 0.9rem;
+  text-shadow: 0 0 5px rgba(255, 74, 61, 0.5);
+}
+
+.credit {
+  position: absolute;
+  bottom: 20px;
+  color: #ccc;
+  font-size: 0.8rem;
+  opacity: 0.7;
+  z-index: 2;
+}
+
+/* Background Animation */
+.login-container::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255, 111, 97, 0.1), transparent 70%);
+  animation: rotate 20s linear infinite;
+  z-index: 1;
+}
+
+/* Keyframes */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes glow {
+  0% {
+    text-shadow: 0 0 10px #ff6f61, 0 0 20px #ff6f61;
+  }
+  100% {
+    text-shadow: 0 0 20px #ff6f61, 0 0 40px #ff6f61;
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 /* Study Materials Page Styles */
@@ -135,10 +216,6 @@ body {
 
 
 /* Animations */
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
 
 @keyframes slideUp {
   from { transform: translateY(20px); opacity: 0; }
