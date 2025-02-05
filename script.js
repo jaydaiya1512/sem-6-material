@@ -1,4 +1,4 @@
-const allowedPasswords = ["baksgandu", "7004", "7024", "7026", "7030", "7040"];
+const allowedPasswords = ["7001", "7004", "7024", "7026", "7030", "7040"];
 const passwordInput = document.getElementById("password");
 const loginButton = document.getElementById("login-btn");
 const errorMsg = document.getElementById("error-msg");
